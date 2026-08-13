@@ -2,35 +2,44 @@ const root = document.documentElement;
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const finePointer = window.matchMedia('(pointer: fine)');
 
-/* Theme toggle */
+/* Theme toggle — defaults to light regardless of system preference */
 const savedTheme = localStorage.getItem('nobleman-theme');
-const preferredDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-root.dataset.theme = savedTheme || (preferredDark ? 'dark' : 'light');
-const themeToggle = document.querySelector('.theme-toggle');
+root.dataset.theme = savedTheme || 'light';
+const themeToggles = document.querySelectorAll('.theme-toggle');
+const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 function syncTheme() {
   const dark = root.dataset.theme === 'dark';
-  themeToggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
-  themeToggle.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
+  themeToggles.forEach((btn) => {
+    btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+    btn.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
+  });
+  if (themeColorMeta) themeColorMeta.setAttribute('content', dark ? '#111318' : '#f7f4ed');
 }
 syncTheme();
-themeToggle.addEventListener('click', () => {
+themeToggles.forEach((btn) => btn.addEventListener('click', () => {
   root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
   localStorage.setItem('nobleman-theme', root.dataset.theme);
   syncTheme();
-});
+}));
 
 /* Mobile nav */
 const menuToggle = document.querySelector('.menu-toggle');
 const siteNav = document.querySelector('#site-nav');
+const navScrim = document.querySelector('.nav-scrim');
+function closeMenu() {
+  siteNav.classList.remove('open');
+  navScrim.classList.remove('open');
+  menuToggle.setAttribute('aria-expanded', 'false');
+}
 menuToggle.addEventListener('click', () => {
   const open = menuToggle.getAttribute('aria-expanded') === 'true';
   menuToggle.setAttribute('aria-expanded', String(!open));
-  siteNav.classList.toggle('open');
+  siteNav.classList.toggle('open', !open);
+  navScrim.classList.toggle('open', !open);
 });
-siteNav.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
-  siteNav.classList.remove('open');
-  menuToggle.setAttribute('aria-expanded', 'false');
-}));
+siteNav.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMenu));
+navScrim.addEventListener('click', closeMenu);
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
 
 document.querySelector('#year').textContent = new Date().getFullYear();
 
