@@ -183,15 +183,15 @@ if (finePointer.matches && !reduceMotion.matches) {
     });
   });
 
+  const heroGlow = document.querySelector('.hero-glow');
   const heroVisual = document.querySelector('.hero-visual');
-  const heroImg = heroVisual ? heroVisual.querySelector('img') : null;
-  if (heroVisual && heroImg) {
+  if (heroVisual && heroGlow) {
     heroVisual.addEventListener('mousemove', (e) => {
       const rect = heroVisual.getBoundingClientRect();
       const px = (e.clientX - rect.left) / rect.width - 0.5;
       const py = (e.clientY - rect.top) / rect.height - 0.5;
-      heroImg.style.transform = `scale(1.05) translate(${px * -10}px, ${py * -10}px)`;
+      heroGlow.style.transform = `translate(${px * 26}px, ${py * 26}px)`;
     });
-    heroVisual.addEventListener('mouseleave', () => { heroImg.style.transform = ''; });
+    heroVisual.addEventListener('mouseleave', () => { heroGlow.style.transform = ''; });
   }
 }
