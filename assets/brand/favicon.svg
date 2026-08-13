@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-label="Nobleman U. monogram">
+  <rect width="180" height="180" rx="40" fill="#111318"/>
+  <path d="M43 127V53h18l42 47V53h22v74h-18L65 80v47H43Z" fill="#F7F4ED"/>
+  <path d="M102 53h23v43c0 9 4 13 12 13 8 0 12-4 12-13V53h23v45c0 21-13 32-35 32s-35-11-35-32V53Z" fill="#3478F6"/>
+  <circle cx="158" cy="127" r="6" fill="#3478F6"/>
+</svg>
