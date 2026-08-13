@@ -74,12 +74,17 @@ form.addEventListener('submit', async (event) => {
 /* Scroll progress + sticky header state */
 const progressBar = document.querySelector('.scroll-progress span');
 const header = document.querySelector('.site-header');
+const whatsappBtn = document.querySelector('.whatsapp');
+const heroEl = document.querySelector('.hero');
 let ticking = false;
 function onScroll() {
   const scrollTop = window.scrollY;
   const height = document.documentElement.scrollHeight - window.innerHeight;
   progressBar.style.transform = `scaleX(${height > 0 ? Math.min(scrollTop / height, 1) : 0})`;
   header.classList.toggle('scrolled', scrollTop > 12);
+  if (whatsappBtn && heroEl) {
+    whatsappBtn.classList.toggle('visible', scrollTop > heroEl.offsetHeight - 220);
+  }
   ticking = false;
 }
 window.addEventListener('scroll', () => {
