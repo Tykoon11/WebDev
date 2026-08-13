@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 180" role="img" aria-labelledby="title desc">
+  <title id="title">Nobleman U. logo</title>
+  <desc id="desc">An NU monogram followed by the Nobleman U. wordmark.</desc>
+  <g fill="none" fill-rule="evenodd">
+    <rect width="180" height="180" rx="40" fill="#111318"/>
+    <path d="M43 127V53h18l42 47V53h22v74h-18L65 80v47H43Z" fill="#F7F4ED"/>
+    <path d="M102 53h23v43c0 9 4 13 12 13 8 0 12-4 12-13V53h23v45c0 21-13 32-35 32s-35-11-35-32V53Z" fill="#3478F6"/>
+    <circle cx="158" cy="127" r="6" fill="#3478F6"/>
+    <text x="218" y="103" fill="#111318" font-family="Inter, Arial, sans-serif" font-size="56" font-weight="800" letter-spacing="-2">NOBLEMAN U.</text>
+    <text x="221" y="137" fill="#5E6470" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="600" letter-spacing="3">WEB • SOFTWARE • AI</text>
+  </g>
+</svg>
