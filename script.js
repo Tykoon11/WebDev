@@ -75,15 +75,20 @@ form.addEventListener('submit', async (event) => {
 const progressBar = document.querySelector('.scroll-progress span');
 const header = document.querySelector('.site-header');
 const whatsappBtn = document.querySelector('.whatsapp');
-const heroEl = document.querySelector('.hero');
+const heroPinSpacer = document.querySelector('.hero-pin-spacer');
 let ticking = false;
 function onScroll() {
   const scrollTop = window.scrollY;
   const height = document.documentElement.scrollHeight - window.innerHeight;
   progressBar.style.transform = `scaleX(${height > 0 ? Math.min(scrollTop / height, 1) : 0})`;
   header.classList.toggle('scrolled', scrollTop > 12);
-  if (whatsappBtn && heroEl) {
-    whatsappBtn.classList.toggle('visible', scrollTop > heroEl.offsetHeight - 220);
+  if (heroPinSpacer && !reduceMotion.matches) {
+    const runway = heroPinSpacer.offsetHeight - window.innerHeight;
+    const heroProgress = runway > 0 ? Math.min(Math.max(scrollTop / runway, 0), 1) : 0;
+    root.style.setProperty('--scroll-progress', heroProgress.toFixed(4));
+  }
+  if (whatsappBtn && heroPinSpacer) {
+    whatsappBtn.classList.toggle('visible', scrollTop > heroPinSpacer.offsetHeight - 220);
   }
   ticking = false;
 }
@@ -197,15 +202,4 @@ if (finePointer.matches && !reduceMotion.matches) {
     });
   });
 
-  const hero = document.querySelector('.hero');
-  const heroMedia = document.querySelector('.hero-media');
-  if (hero && heroMedia) {
-    hero.addEventListener('mousemove', (e) => {
-      const rect = hero.getBoundingClientRect();
-      const px = (e.clientX - rect.left) / rect.width - 0.5;
-      const py = (e.clientY - rect.top) / rect.height - 0.5;
-      heroMedia.style.transform = `translate(${px * -14}px, ${py * -10}px) scale(1.03)`;
-    });
-    hero.addEventListener('mouseleave', () => { heroMedia.style.transform = ''; });
-  }
 }
