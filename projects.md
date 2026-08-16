@@ -66,6 +66,36 @@ A modern cloud and AI infrastructure experience presenting compute, GPU, databas
 - `assets/projects/fugoku/services.png`
 - `assets/projects/fugoku/products.png`
 
+## 03 — VisibleOps
+
+**Status:** Published founder project (not client work—disclose accurately)  
+**Type:** AI operations SaaS platform  
+**Website:** https://visibleops-web-k4o2dxj5aq-uc.a.run.app/  
+**Portfolio label:** Full-Stack Engineering • AI Automation • Product Design
+
+### Portfolio summary
+
+An AI operations platform that automates repetitive browser-based back-office work—inventory uploads, invoice processing, portal updates—while keeping every action visible, approval-gated, and auditable. Built end-to-end: FastAPI + PostgreSQL backend, Next.js frontend, deployed on GCP Cloud Run.
+
+### Key functionality
+
+- Four-step guided workflow: Connect, Propose, Approve, Prove it
+- AI-assisted field mapping and portal-selector proposal, fully reviewable before running
+- Human-in-the-loop approval gate on risky actions (publish, submit, pay, delete)
+- Full audit trail—screenshots, logs, and timestamped reports per run
+- Recurring scheduled runs with fresh data re-fetch
+- Built for auto dealerships, bookkeeping/accounting, property management, logistics, insurance, and back-office teams generally
+
+### Card copy
+
+**Headline:** AI operations, done in the open.
+
+**Short copy:** Automates the repetitive browser work teams do by hand every week—without turning it into a black box. Every action stays visible, approval-gated, and auditable.
+
+### Images
+
+- `assets/projects/visibleops/home.png`
+
 ## Withheld Projects
 
 - Mentty — do not publish until final images and approval are provided.
